@@ -5,3 +5,6 @@
 skilgreining 1N = 1kg*1ms/s(Í 2) <br>
 Á þingdersviði jarðar 1kg*9.8m/s(Í 2) = 10N<br>
 V5 rauður = 2,1Nm<br>
+
+![mynd](https://github.com/gitmaus1/v-lmenni-II/blob/main/Verkefni%202/Untitled.png)
+
