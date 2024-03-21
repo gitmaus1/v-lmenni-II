@@ -15,3 +15,6 @@ V5grænn = 1Nm = 0.1kgm
 ![mynd](https://github.com/gitmaus1/v-lmenni-II/blob/main/Verkefni%202/Untitled2.png)
 
 <h1>v5 Video  </h1>
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z7PExj_v-ZU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
