@@ -19,3 +19,6 @@ V5grænn = 1Nm = 0.1kgm
 ![Watch the video]([https://youtu.be/vt5fpE0bzSY](https://youtube.com/shorts/9iINNUMCt-4)https://youtube.com/shorts/9iINNUMCt-4)
 
 https://youtube.com/shorts/9iINNUMCt-4
+
+[![Alt text](https://img.youtube.com/vi/VID/0.jpg)](https://youtube.com/shorts/9iINNUMCt-4)
+
