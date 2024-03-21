@@ -10,3 +10,8 @@ V5 rauður = 2,1Nm<br>
 
 V5grænn = 1Nm = 0.1kgm
 0,1kgm=10kgm(stall)Reiknum m 70% 0,7 x 10 kcm = 7kgm
+
+
+![mynd](https://github.com/gitmaus1/v-lmenni-II/blob/main/Verkefni%202/Untitled2.png)
+
+<h1>v5 Video  </h1>
