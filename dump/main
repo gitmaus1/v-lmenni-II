@@ -174,15 +174,25 @@ void driveToPositionY(double y) {
   Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
   Drivetrain.drive(forward);
 
+
+controller1.Screen.clearScreen();
+ controller1.Screen.newLine();
+      controller1.Screen.print("end game");
+  controller1.Screen.newLine();
   // Keep driving until the GPS position for the Y-axis is within 20mm of the target Y position
-  while (!(GPS8.yPosition(mm) - y > -20 && GPS8.yPosition(mm) - y < 20)) {
+  while (!(GPS8.yPosition(mm) - y > -100 && GPS8.yPosition(mm) - y < 100)) {
         GyroD.calibrate();
   waitUntil(!GyroD.isCalibrating());
     wait(0.1, seconds);
   }
-
+controller1.Screen.clearScreen();
+ controller1.Screen.newLine();
+      controller1.Screen.print("stop");
+  controller1.Screen.newLine();
   // This will allow the drivetrain to stop in time, preventing the robot from overshooting the target
   Drivetrain.stop();
+  LeftMotor.stop();
+  RightMotor.stop();
 }
 
 void printPosition() {
@@ -200,7 +210,7 @@ int main() {
       GyroD.calibrate();
   waitUntil(!GyroD.isCalibrating());
 
-  Drivetrain.setTurnVelocity(20, percent);
+  Drivetrain.setTurnVelocity(10, percent);
   
   // Print the starting position of the robot
   
