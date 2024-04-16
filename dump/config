@@ -16,12 +16,14 @@ motor RightDriveSmart = motor(PORT2, ratio18_1, true);
 //inertial DrivetrainInertial = inertial(PORT3);
 
 gyro GyroD = gyro(Brain.ThreeWirePort.A);
-smartdrive Drivetrain = smartdrive(LeftDriveSmart, RightDriveSmart, GyroD, 267, 280, 277, mm, 1);
+
+gps GPS8 = gps(PORT6, 0, 0, mm, 180);
+smartdrive Drivetrain = smartdrive(LeftDriveSmart, RightDriveSmart, GPS8, 267, 280, 277, mm, 1);
 //motor ForkMotorGroupMotorA = motor(PORT2, ratio18_1, false);
 //motor ForkMotorGroupMotorB = motor(PORT9, ratio18_1, true);
 //motor_group ForkMotorGroup = motor_group(ForkMotorGroupMotorA, ForkMotorGroupMotorB);
 //rotation Rotation4 = rotation(PORT4, false);
-gps GPS8 = gps(PORT6, 0, 0, mm, 180);
+
 //distance DistanceLeft = distance(PORT12);
 //distance DistanceRight = distance(PORT20);
 //optical Optical19 = optical(PORT19);
