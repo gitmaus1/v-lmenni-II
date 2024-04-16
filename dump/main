@@ -76,7 +76,7 @@ controller1.Screen.clearScreen();
    controller1.Screen.print("stuck ");
    controller1.Screen.print(referenceAngle - GPS8.heading());
      controller1.Screen.newLine();
-  //Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
+  Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
   
 //Drivetrain.turnFor(90, deg);
 
@@ -95,24 +95,39 @@ controller1.Screen.print( GPS8.heading());
   controller1.Screen.print("  Y: %.2f", GPS8.yPosition(mm));
   controller1.Screen.newLine();
 }*/
-
+/*
   ////////////////////////////////////////////////
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   
   // Calibrate the Gyro, and wait for it to finish.
-  GyroD.calibrate();
-  waitUntil(!GyroD.isCalibrating());
+//  GyroD.calibrate();
+//  waitUntil(!GyroD.isCalibrating());
 
   // Set the Gyro's heading to 0.
-  GyroD.setHeading(0, degrees);
+  //GyroD.setHeading(0, degrees);
 
   // Turn right by spinning the LeftMotor forward and the RightMotor reverse.
+
+  float stopturn = (referenceAngle - GPS8.heading());
   LeftMotor.spin(forward);
   RightMotor.spin(reverse);
 
   // Wait until the Gyro's heading is greater than 90 degrees.
-  waitUntil( (referenceAngle - GPS8.heading())-50< referenceAngle - GPS8.heading() <(referenceAngle - GPS8.heading())+50 );
+  waitUntil( (referenceAngle - GPS8.heading())-100< referenceAngle - GPS8.heading() <(referenceAngle - GPS8.heading())+100 );
+
+bool enddd=false;
+while (enddd==false)
+{
+  if ((referenceAngle - GPS8.heading())-50 < stopturn  && (referenceAngle - GPS8.heading())+50 < stopturn  )
+  {
+    enddd=true;
+  }
+  
+}
+
+
+
 
   // Stop both motors.
   LeftMotor.stop();
@@ -120,7 +135,7 @@ controller1.Screen.print( GPS8.heading());
 
 
 
-  ////////////////////////////////////////////////
+  ////////////////////////////////////////////////*/
   
     controller1.Screen.clearScreen();
     
