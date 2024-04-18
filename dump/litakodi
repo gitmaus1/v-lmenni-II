@@ -1,0 +1,167 @@
+MAIN.CPP
+
+/*----------------------------------------------------------------------------*/
+/*                                                                            */
+/*    Module:       main.cpp                                                  */
+/*    Author:       VEX                                                       */
+/*    Created:      Fri Sep 27 2019                                           */
+/*    Description:  V5 project                                                */
+/*                                                                            */
+/*    This project will detect 3 different colored objects and display        */
+/*    when each object is found on the V5 Brain's screen.                     */
+/*                                                                            */
+/*----------------------------------------------------------------------------*/
+
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Vision5              vision        7              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+
+#include "vex.h"
+
+using namespace vex;
+
+event checkRed = event();
+event checkBlue = event();
+event checkGreen = event();
+
+void hasBlueCallback() {
+  Brain.Screen.setFont(mono40);
+  Brain.Screen.clearLine(1, black);
+  Brain.Screen.setCursor(Brain.Screen.row(), 1);
+  Brain.Screen.setCursor(1, 1);
+  Vision7.takeSnapshot(Vision7__BLUEBOX);
+  if (Vision7.objectCount > 0) {
+    Brain.Screen.print("Blue Object Found");
+  } else {
+    Brain.Screen.print("No Blue Object");
+  }
+}
+
+void hasRedCallback() {
+  Brain.Screen.setFont(mono40);
+  Brain.Screen.clearLine(3, black);
+  Brain.Screen.setCursor(Brain.Screen.row(), 1);
+  Brain.Screen.setCursor(3, 1);
+  Vision7.takeSnapshot(Vision7__REDBOX);
+  if (Vision7.objectCount > 0) {
+    Brain.Screen.print("Red Object Found");
+  } else {
+    Brain.Screen.print("No Red Object");
+  }
+}
+
+void hasGreenCallback() {
+  Brain.Screen.setFont(mono40);
+  Brain.Screen.clearLine(5, black);
+  Brain.Screen.setCursor(Brain.Screen.row(), 1);
+  Brain.Screen.setCursor(5, 1);
+  Vision7.takeSnapshot(Vision7__GREENBOX);
+  if (Vision7.objectCount > 0) {
+    Brain.Screen.print("Green Object Found");
+  } else {
+    Brain.Screen.print("No Green Object");
+  }
+}
+
+int main() {
+  // Initializing Robot Configuration. DO NOT REMOVE!
+  vexcodeInit();
+
+  checkBlue(hasBlueCallback);
+  checkRed(hasRedCallback);
+  checkGreen(hasGreenCallback);
+  
+  while (true) {
+    checkBlue.broadcastAndWait();
+    checkRed.broadcastAndWait();
+    checkGreen.broadcastAndWait();
+    wait(1, seconds);
+  }
+}
+
+
+config.cpp
+
+#include "vex.h"
+
+using namespace vex;
+using signature = vision::signature;
+using code = vision::code;
+
+// A global instance of brain used for printing to the V5 Brain screen
+brain  Brain;
+
+// VEXcode device constructors
+/*vex-vision-config:begin*/
+signature Vision7__BLUEBOX = signature (1, 469, 1553, 1011, 4293, 7351, 5822, 1.8, 0);
+signature Vision7__GREENBOX = signature (2, -7657, -4359, -6008, -4025, -1861, -2943, 2.5, 0);
+signature Vision7__REDBOX = signature (3, 8415, 10183, 9299, -1927, -1243, -1585, 2.5, 0);
+vision Vision7 = vision (PORT7, 50, Vision7__BLUEBOX, Vision7__GREENBOX, Vision7__REDBOX);
+/*vex-vision-config:end*/
+
+// VEXcode generated functions
+
+
+
+/**
+ * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
+ * 
+ * This should be called at the start of your int main function.
+ */
+void vexcodeInit( void ) {
+  // nothing to initialize
+}
+
+
+CONFIG.H
+
+using namespace vex;
+
+extern brain Brain;
+
+using signature = vision::signature;
+
+// VEXcode devices
+extern signature Vision7__BLUEBOX;
+extern signature Vision7__GREENBOX;
+extern signature Vision7__REDBOX;
+extern vision Vision7;
+
+/**
+ * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
+ * 
+ * This should be called at the start of your int main function.
+ */
+void  vexcodeInit( void );
+
+
+VEX.H
+
+/*----------------------------------------------------------------------------*/
+/*                                                                            */
+/*    Module:       vex.h                                                     */
+/*    Author:       Vex Robotics                                              */
+/*    Created:      1 Feb 2019                                                */
+/*    Description:  Default header for V5 projects                            */
+/*                                                                            */
+/*----------------------------------------------------------------------------*/
+//
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "v5.h"
+#include "v5_vcs.h"
+
+#include "robot-config.h"
+
+#define waitUntil(condition)                                                   \
+  do {                                                                         \
+    wait(5, msec);                                                             \
+  } while (!(condition))
+
+#define repeat(iterations)                                                     \
+  for (int iterator = 0; iterator < iterations; iterator++)
