@@ -2,3 +2,5 @@
 
 <h3>minband</h3>
 
+[video](https://youtu.be/7DPv1a0kL94)
+
