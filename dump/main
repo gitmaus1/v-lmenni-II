@@ -77,10 +77,21 @@ controller1.Screen.print( GPS8.heading());
     controller1.Screen.print("forward");
   Drivetrain.drive(forward);
 
+float pos1=GPS8.yPosition(mm);
+
   // Keep driving until the GPS position for the X-axis is within 20mm of the target X position
   while (!(GPS8.xPosition(mm) - x > -50 && GPS8.xPosition(mm) - x < 50)) {
-  Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
-  Drivetrain.drive(forward);
+
+        if ((GPS8.yPosition(mm) > (pos1 -50) && GPS8.yPosition(mm)  < (pos1+50))){
+      //Drivetrain.setTurnVelocity(5, percent);
+      Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
+      //Drivetrain.stop();
+      wait(0.1, seconds);
+      //Drivetrain.setTurnVelocity(10, percent);
+      Drivetrain.drive(forward);}
+      
+      
+      
   }
 
   // This will allow the drivetrain to stop in time, preventing the robot from overshooting the target
@@ -111,13 +122,43 @@ controller1.Screen.clearScreen();
   controller1.Screen.newLine();
 */
   // Keep driving until the GPS position for the Y-axis is within 20mm of the target Y position
+int sad = 1;
+  float pos2=GPS8.xPosition(mm);
   while (!(GPS8.yPosition(mm) - y > -50 && GPS8.yPosition(mm) - y < 50)) {
 
 
-  Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
-  Drivetrain.drive(forward);
+//if ((GPS8.yPosition(mm) > (pos2 -50) && GPS8.yPosition(mm)  < (pos2+50))){
 
-    wait(0.1, seconds);
+          if ((GPS8.xPosition(mm) > (pos2 -50) && GPS8.xPosition(mm)  < (pos2+50))){
+      //Drivetrain.setTurnVelocity(5, percent);
+      Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
+      //Drivetrain.stop();
+      wait(0.1, seconds);
+      //Drivetrain.setTurnVelocity(10, percent);
+      Drivetrain.drive(forward);}
+  /*
+  if (sad==1)
+  {
+          Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
+      //Drivetrain.stop();
+      
+      //Drivetrain.setTurnVelocity(10, percent);
+      Drivetrain.drive(forward);
+      sad = 2;
+  }
+  else
+  
+      Drivetrain.turnFor(left, (referenceAngle - GPS8.heading()), degrees, true);
+      //Drivetrain.stop();
+      
+      //Drivetrain.setTurnVelocity(10, percent);
+      Drivetrain.drive(forward);
+      sad = 1;
+}
+
+*/
+
+    
   }
 
   // This will allow the drivetrain to stop in time, preventing the robot from overshooting the target
