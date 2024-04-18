@@ -37,16 +37,12 @@ void driveToPositionX(double x) {
 
   // Reorient the robot before driving along the X-axis
   if (GPS8.xPosition(mm) < x) {
-      controller1.Screen.clearScreen();
-    controller1.Screen.print("referenceAngle = 90");
-      controller1.Screen.newLine();
+
 
     referenceAngle = 90;
   }
   else {
-        
-        controller1.Screen.print("referenceAngle = 270");
-        controller1.Screen.newLine();
+
 
 
     referenceAngle = 270;
@@ -71,71 +67,10 @@ controller1.Screen.print( GPS8.heading());
 
     GPS8.calibrate();
    waitUntil(!GPS8.isCalibrating());
-controller1.Screen.clearScreen();
-  controller1.Screen.newLine();
-   controller1.Screen.print("stuck ");
-   controller1.Screen.print(referenceAngle - GPS8.heading());
-     controller1.Screen.newLine();
+
   Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
   
-//Drivetrain.turnFor(90, deg);
 
-/*
-while (true)
-{
-  Brain.Screen.print( referenceAngle - GPS8.heading());
-  Brain.Screen.print( GPS8.heading());
-    Brain.Screen.print("X: %.2f", GPS8.xPosition(mm));
-  Brain.Screen.print("  Y: %.2f", GPS8.yPosition(mm));
-  Brain.Screen.newLine();
-
-controller1.Screen.print( referenceAngle - GPS8.heading());
-controller1.Screen.print( GPS8.heading());
-      controller1.Screen.print("X: %.2f", GPS8.xPosition(mm));
-  controller1.Screen.print("  Y: %.2f", GPS8.yPosition(mm));
-  controller1.Screen.newLine();
-}*/
-/*
-  ////////////////////////////////////////////////
-  // Initializing Robot Configuration. DO NOT REMOVE!
-  vexcodeInit();
-  
-  // Calibrate the Gyro, and wait for it to finish.
-//  GyroD.calibrate();
-//  waitUntil(!GyroD.isCalibrating());
-
-  // Set the Gyro's heading to 0.
-  //GyroD.setHeading(0, degrees);
-
-  // Turn right by spinning the LeftMotor forward and the RightMotor reverse.
-
-  float stopturn = (referenceAngle - GPS8.heading());
-  LeftMotor.spin(forward);
-  RightMotor.spin(reverse);
-
-  // Wait until the Gyro's heading is greater than 90 degrees.
-  waitUntil( (referenceAngle - GPS8.heading())-100< referenceAngle - GPS8.heading() <(referenceAngle - GPS8.heading())+100 );
-
-bool enddd=false;
-while (enddd==false)
-{
-  if ((referenceAngle - GPS8.heading())-50 < stopturn  && (referenceAngle - GPS8.heading())+50 < stopturn  )
-  {
-    enddd=true;
-  }
-  
-}
-
-
-
-
-  // Stop both motors.
-  LeftMotor.stop();
-  RightMotor.stop();
-
-
-
-  ////////////////////////////////////////////////*/
   
     controller1.Screen.clearScreen();
     
@@ -144,10 +79,8 @@ while (enddd==false)
 
   // Keep driving until the GPS position for the X-axis is within 20mm of the target X position
   while (!(GPS8.xPosition(mm) - x > -50 && GPS8.xPosition(mm) - x < 50)) {
- //       GyroD.calibrate();
-//  waitUntil(!GyroD.isCalibrating());
- //   wait(0.1, seconds);
-    controller1.Screen.print("while x");
+  Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
+  Drivetrain.drive(forward);
   }
 
   // This will allow the drivetrain to stop in time, preventing the robot from overshooting the target
@@ -156,17 +89,14 @@ while (enddd==false)
 }
 
 void driveToPositionY(double y) {
-      GyroD.calibrate();
-  waitUntil(!GyroD.isCalibrating());
+
   // Reorient the robot before driving along the Y-axis
   if (GPS8.yPosition(mm) < y) {
-        GyroD.calibrate();
-  waitUntil(!GyroD.isCalibrating());
+
     referenceAngle = 0;
   }
   else {
-        GyroD.calibrate();
-  waitUntil(!GyroD.isCalibrating());
+
     referenceAngle = 180;
   }
   // Using an absolute reference angle along with the GPS heading,
@@ -174,25 +104,26 @@ void driveToPositionY(double y) {
   Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
   Drivetrain.drive(forward);
 
-
+/*
 controller1.Screen.clearScreen();
  controller1.Screen.newLine();
       controller1.Screen.print("end game");
   controller1.Screen.newLine();
+*/
   // Keep driving until the GPS position for the Y-axis is within 20mm of the target Y position
-  while (!(GPS8.yPosition(mm) - y > -100 && GPS8.yPosition(mm) - y < 100)) {
-        GyroD.calibrate();
-  waitUntil(!GyroD.isCalibrating());
+  while (!(GPS8.yPosition(mm) - y > -50 && GPS8.yPosition(mm) - y < 50)) {
+
+
+  Drivetrain.turnFor(right, (referenceAngle - GPS8.heading()), degrees, true);
+  Drivetrain.drive(forward);
+
     wait(0.1, seconds);
   }
-controller1.Screen.clearScreen();
- controller1.Screen.newLine();
-      controller1.Screen.print("stop");
-  controller1.Screen.newLine();
+
   // This will allow the drivetrain to stop in time, preventing the robot from overshooting the target
   Drivetrain.stop();
-  LeftMotor.stop();
-  RightMotor.stop();
+  //LeftMotor.stop();
+  //RightMotor.stop();
 }
 
 void printPosition() {
