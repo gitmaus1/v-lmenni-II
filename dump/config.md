@@ -1,3 +1,4 @@
+```C++
 #include "vex.h"
 
 using namespace vex;
@@ -58,3 +59,4 @@ void vexcodeInit( void ) {
   wait(50, msec);
   Brain.Screen.clearScreen();
 }
+```
