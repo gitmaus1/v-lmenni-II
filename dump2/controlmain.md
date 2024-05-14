@@ -1,5 +1,6 @@
 
 ```C++
+
 #include "vex.h"
 
 using namespace vex;
@@ -35,19 +36,21 @@ void controller_L2_Pressed(){
 }
 
 void controller_R1_Pressed(){
+   ClawMotor.stop();
   ClawMotor.spin(reverse);
   while (Controller1.ButtonR1.pressing()) {
     wait(5, msec);
   }
-  ClawMotor.stop();
+  
 }
 
 void controller_R2_Pressed(){
+   ClawMotor.stop();
   ClawMotor.spin(forward);
   while (Controller1.ButtonR2.pressing()) {
     wait(5, msec);
   }
-  ClawMotor.stop();
+
 }
 
 int main() {
