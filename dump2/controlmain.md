@@ -1,6 +1,7 @@
 
 ```C++
 
+
 #include "vex.h"
 
 using namespace vex;
@@ -65,7 +66,7 @@ int main() {
   // Configure Arm and Claw motor hold settings and velocity
   ArmMotor.setStopping(hold);
   ClawMotor.setStopping(hold);
-  ArmMotor.setVelocity(75, percent);
+  ArmMotor.setVelocity(90, percent);
   ClawMotor.setVelocity(70, percent);
 
   // Main Controller loop to set motors to controller axis postiions
@@ -77,4 +78,5 @@ int main() {
     wait(5, msec);
   }
 }
+
 ```
