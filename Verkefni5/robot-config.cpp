@@ -25,15 +25,11 @@ smartdrive Drivetrain = smartdrive(LeftDriveSmart, RightDriveSmart, GPS8, 267, 2
 
 
 
+signature Vision5__BLUEBOX = signature (1, 1303, 2521, 1912, 6787, 10795, 8791, 2.5, 0);
+signature Vision5__GREENBOX = signature (2, -5759, -3007, -4383, -3907, -2067, -2987, 1.4, 0);
+signature Vision5__REDBOX = signature (3, 7515, 9511, 8513, -2013, -1497, -1755, 2.1, 0);
+vision Vision5 = vision (PORT7, 50, Vision5__BLUEBOX, Vision5__GREENBOX, Vision5__REDBOX);
 
-
-signature Vision5__BLUEBOX = signature (1, 539, 1401, 970, 5877, 9939, 7908, 2.5, 0);
-signature Vision5__REDBOX = signature (2, 7835, 9061, 8448, -1805, -1269, -1537, 2.5, 0);
-signature Vision5__GREENBOX = signature (3, -6931, -4891, -5911, -3841, -1959, -2900, 2.5, 0);
-
-
-
-vision Vision5 = vision (PORT7, 50, Vision5__BLUEBOX, Vision5__REDBOX, Vision5__GREENBOX);
 
 
 

@@ -71,8 +71,7 @@ const int OFFSET_X = 50;
 
 
 void hasGreenCallback() {
-  if (controler_on_of == 0)
-{
+
 
     controller1.Screen.print(colllor);
   Vision5.takeSnapshot(Vision5__GREENBOX);
@@ -133,7 +132,7 @@ while (ifsothenso == 1){
   } 
   }
 }
-}
+
 
 
 
@@ -141,8 +140,7 @@ while (ifsothenso == 1){
 
 
 void hasRedCallback() {
-  if (controler_on_of == 0)
-{
+
 
     controller1.Screen.print(colllor);
   Vision5.takeSnapshot(Vision5__REDBOX);
@@ -202,7 +200,7 @@ while (ifsothenso == 1){
   } 
   }
 }
-}
+
 
 
 
@@ -220,8 +218,7 @@ while (ifsothenso == 1){
 
 
 void hasBlueCallback() {
-  if (controler_on_of == 0)
-{
+
 
     controller1.Screen.print("Blue");
   Vision5.takeSnapshot(Vision5__BLUEBOX);
@@ -284,7 +281,7 @@ while (ifsothenso == 1){
   } 
   }
 }
-}
+
 
 
 
@@ -307,8 +304,7 @@ while (ifsothenso == 1){
 
 
 void driveToPositionX(double x) {
-  if (controler_on_of == 0)
-{
+
   // Reorient the robot before driving along the X-axis
   if (GPS8.xPosition(mm) < x) {
 
@@ -352,14 +348,14 @@ float pos1=GPS8.yPosition(mm);
       
   }
 
+
   // This will allow the drivetrain to stop in time, preventing the robot from overshooting the target
   Drivetrain.stop();
 }
-}
+
 
 void driveToPositionY(double y) {
-if (controler_on_of == 0)
-{
+
   // Reorient the robot before driving along the Y-axis
   if (GPS8.yPosition(mm) < y) {
 
@@ -407,7 +403,7 @@ int sad = 1;
   wait(1.5, seconds);
   ClawMotor.stop();
 }
-}
+
 
 
 
@@ -497,16 +493,12 @@ while (true)
 
 
 int main() {
-  task myTask = task(myTaskCallback);
+
   
 
 
 
-ifsothenso = 0;
 
-colllor = 0; 
-
-runonce = 0;
 
  
 
@@ -524,7 +516,7 @@ runonce = 0;
 
 
     
-  while (!(ifsothenso==3 && controler_on_of == 0)) {
+  while (!(ifsothenso==3 )) {
 
        Drivetrain.setTurnVelocity(10, percent);
       Drivetrain.turn(left);
@@ -547,9 +539,10 @@ runonce = 0;
          Drivetrain.setTurnVelocity(50, percent);
 
   
-  double x=0;
-  double y=0;
+  double x=-1000;
+  double y=-1000;
 // 1 = blu, red 2, green 3
+/*
 if (colllor == 1)
 {
   //(-1,2;1,2) 5%
@@ -567,7 +560,7 @@ if (colllor == 3)
   //(1,5;0) 5%
    x=1100;
    y=0;
-}
+}*/
 
 
     controller1.Screen.clearScreen();
@@ -577,7 +570,15 @@ if (colllor == 3)
     controller1.Screen.clearScreen();
     controller1.Screen.print(colllor);
   driveToPositionY(y);
+int end = 1;
+  while(end == 1) 
+   {
+    
+    Drivetrain.stop();
 
+//Brain.Screen.print("%.2f", RangeFinderC.distance(mm));
+    exit;
+   }
 
 
 }
