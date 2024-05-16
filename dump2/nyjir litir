@@ -1,0 +1,4 @@
+signature Vision7__BLUEBOX = signature (1, 1303, 2521, 1912, 6787, 10795, 8791, 2.5, 0);
+signature Vision7__GREENBOX = signature (2, -5759, -3007, -4383, -3907, -2067, -2987, 1.4, 0);
+signature Vision7__REDBOX = signature (3, 7515, 9511, 8513, -2013, -1497, -1755, 2.1, 0);
+vision Vision7 = vision (PORT7, 50, Vision7__BLUEBOX, Vision7__GREENBOX, Vision7__REDBOX);
